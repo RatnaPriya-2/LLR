@@ -11,8 +11,8 @@ export default function About() {
             </section>
 
             <section className="double-image">
-                <img className="about-1" src={require('../../../assets/food/food3.jpeg')} alt="Little Lemon restaurant cuisine 1"></img>
-                <img className="about-2" src={require('../../../assets/food/food2.jpeg')} alt="Little Lemon restaurant cuisine 2"></img>
+                <img className="about-1" src={require('../../../assets/mario2.jpg')} alt="Mario and Adrian"></img>
+                <img className="about-2" src={require('../../../assets/mario1.jpg')} alt="Mario and Adrian"></img>
             </section>
     </article>
     );

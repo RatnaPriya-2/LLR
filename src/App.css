@@ -6,25 +6,35 @@ label,
 input,
 select,
 textarea,
-p {
+p{
   font-family: "Karla";
+  margin:1rem 0rem;
+  
 }
 
 input,
-select,
 option,
 textarea {
   background-color: #eeeeee;
   border: none;
-  padding: 5px 5px 5px 5px;
-  border-radius: 0.2rem;
+  padding: 0.8rem;
+  border-radius: 0.3rem;
   resize: none;
+  width:25rem;
+
 }
 
-input,
-select {
-  width: 10rem;
+select{
+  width:26.5rem;
+  background-color: #eeeeee;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 0.3rem;
+  resize: none;
+  
 }
+
+
 
 body {
   margin: 0; /* removes white border around website*/
@@ -79,14 +89,20 @@ Link:link {
 .navbar-menu {
   grid-template-columns: repeat(7, 1fr);
   align-items: center;
+  column-gap:1rem;
+  
+}
+
+.desktop{
+  padding:1rem 10rem;
+  margin:0rem;
 }
 
 .navbar-menu > li,
 .navbar-menu > a,
 .navbar-menu > Link {
-  text-align: center;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+text-align: center;
+
 }
 
 .mobile {
@@ -100,7 +116,8 @@ Link:link {
 
 .hover-effect:hover {
   background-color: #f4ce14;
-  transition: 0.25s;
+  transition: 0.3s;
+  border-radius:2rem;
 }
 
 .nav-image {
@@ -114,66 +131,89 @@ Link:link {
   background-color: #495e57;
   color: white;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 1.25rem 5rem 1.2rem 5rem;
-  margin-top: -1.4rem;
+  grid-template-columns:1fr 1fr;
+  padding:2rem 10rem;
+
+
+
 }
 
 .hero-text > h1 {
   font-size: 3rem;
   margin-top: 0rem;
-  margin-bottom: -3rem;
+  margin-bottom:-2.8rem;
+
+
 }
 
 .hero-text > h2 {
   font-size: 2.5rem;
+  padding-bottom:1rem;
+}
+
+.hero-text > p{
+  width:25rem;
+  padding-top:1rem;
+  padding-bottom:3rem;
+  font-size:1.2rem;
+  line-height:1.5rem;
 }
 
 .hero-image {
-  max-height: 17rem;
-  padding-left: 2rem;
+  max-height: 22rem;
+  padding-left:20rem;
+  padding-top:1rem;
 }
 
 .hero-image > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+ width: 18.75rem;
+ border-radius:20px;
+ height:26.25rem;
+ padding-right:0rem;
 }
 
 /* SPECIALS */
 .specials {
-  padding: 2rem 5rem 0 5rem;
+  padding: 2rem 10rem 0 10rem;
   animation-duration: 0.33s;
   animation-timing-function: ease-in-out;
   animation-name: slideDownFade;
 }
 
 .specials-topbar {
-  align-items: center;
+ display:flex;
+ align-items:center;
+ justify-content: space-between;
   margin-bottom: 2rem;
+  margin-top:6rem;
 }
 
 .specials-topbar > h1 {
   font-size: 2.5rem;
   margin-right: 1rem;
   margin-bottom: 1rem;
+  margin-top:1rem;
 }
 
 .specials-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2vw;
+  grid-gap: 3vw;
+  
 }
 
 .menu-card {
   background-color: #edefee;
   padding-bottom: 1rem;
+  border-radius: 1rem;
 }
 
 .menu-card > img {
-  height: 25vh;
+  height: 70vh;
   width: 100%;
   object-fit: cover;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
 }
 
 .menu-card-content {
@@ -188,6 +228,9 @@ Link:link {
 .menu-card-content > h3 {
   font-size: 1.8rem;
   margin: 0;
+}
+.menu-card-content > p{
+  margin-bottom:3rem;
 }
 
 .special-button {
@@ -212,36 +255,51 @@ Link:link {
 
 /* TESTIMONIAL CARDS */
 .testimonials {
-  padding: 0 5rem 2rem 5rem;
+  padding: 6rem 10rem 6rem 10rem;
   animation-duration: 0.33s;
   animation-timing-function: ease-in-out;
   animation-name: slideDownFade;
+
 }
 
 .testimonials-topbar > h1 {
   text-align: center;
   font-size: 3rem;
-  margin: 4rem 0 1rem 0;
+  margin: 0rem 0rem 4rem 0rem;
 }
 
 .testimonials-cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);  
   grid-gap: 2vw;
   align-items: center;
 }
 
 .testimonial-card {
   background-color: #edefee;
-  padding: 1rem 1rem 0 1rem;
+  padding: 1.5rem 2rem;
+  height:20rem;
+  border-radius: 1rem;
 }
 
-.testimonial-card > img {
-  width: 3rem;
+.testimonial-card .rating {
+  width: 8rem;
   height: 3rem;
-  object-fit: contain;
+  object-fit: cover;
+  display:block;
+  margin-left:-0.5rem;
+  padding-bottom:1rem;
+  
 }
+
+.testimonial-card .profilepic {
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+  border-radius:50%;
+  
+}
+
 
 .testimonials-carousel {
   display: none;
@@ -256,8 +314,8 @@ Link:link {
   background-color: #f4ce14;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 1.25rem 5rem 2.5rem 5rem;
-  min-height: 22rem;
+  padding: 4rem 10rem;
+  min-height: 33rem;
   margin-bottom: -1rem;
   grid-gap: 25vw;
 }
@@ -267,10 +325,11 @@ Link:link {
 }
 
 .double-image {
-  max-height: 18rem;
+  max-height: 20rem;
   position: relative;
   top: 4rem;
-  left: 2rem;
+  left: 4rem;
+ 
 }
 
 .double-image > img {
@@ -281,14 +340,16 @@ Link:link {
 
 .about-1 {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 8rem;
+  left: -5rem;
+  border-radius:1rem;
 }
 
 .about-2 {
   position: absolute;
   top: -3.5rem;
-  left: 5rem;
+  left: 6rem;
+  border-radius:1rem;
 }
 
 /* FOOTER STYLING */
@@ -351,36 +412,39 @@ footer > menu {
 /* RESERVE A TABLE */
 .reserve-table {
   position: relative;
-  text-align: center;
+  text-align: left;
   color: white;
-  margin-top: -1.4rem;
   overflow: hidden;
+  margin:0rem 10rem;
+
 }
 
-.header-reserve {
-  width: 100vw; /* width of container */
-  height: 20rem; /* height of container */
-  object-fit: cover;
+.table{
+  width: 40vw;
+  height: 70rem;
+
 }
 
 .reserve-header-text {
   background-color: #495e57;
-  padding: 0 3rem 0 3rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 25px;
-  border-radius: 0.5rem;
+  padding: 0.3rem  3rem;
+  text-align: center;
+
 }
 
 .reservation-form {
-  padding: 2rem 0 0.5rem 0;
-  text-align: center;
+  padding: 3rem 10rem;
+  display:flex;
+  
+}
+.reservation-details{
+  padding-left:10rem;
 }
 
-.reservation-form > div {
-  margin-bottom: 1.5rem;
+
+
+.note{
+  padding-bottom:2rem;
 }
 
 .confirmation-header {

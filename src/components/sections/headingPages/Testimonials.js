@@ -1,5 +1,14 @@
 import Carousel from './TestimonialCarousel'
 import TestimonialCard from './CardInfo/TestimonialCard';
+import Jackson from '../../../assets/jackson.jpg';
+import Janice from '../../../assets/janicesanders.jpg';
+import Mark from '../../../assets/markkennedy.jpg';
+import Vicky from '../../../assets/vicky.jpg';
+import Four from '../../../assets/fourstars.png';
+import Five from '../../../assets/fivestars.png';
+import Half from '../../../assets/fourstars.png';
+
+
 export default function Testimonials() {
     return (
         <section className="testimonials">
@@ -9,21 +18,12 @@ export default function Testimonials() {
 
 
             <section className="testimonials-cards">
-                <TestimonialCard name="Micheal Caldwell" description="This is the best Mediterranean food that I've ever had!"/>
-                <TestimonialCard name="Alan Chen" description="My Shiba Inu, Mugi, really loved the cozy vibes and 
-                delicious food here."/>
-                <TestimonialCard name="Casey Lau" description="I've had some great Mediterranean food before, but none of them beats
-             Little Lemon in flavor and texture."/>
-                <TestimonialCard name="John Rosenblum" description="Great food, welcoming staff, cozy atmosphere. A great place to 
-                treat your kids to."/>
-                <TestimonialCard name="Jim Reynor" description="The food here really refreshed me after a late night shift
-                at the local supply depot."/>
-                <TestimonialCard name="Brian Dean" description="I came to Little Lemon after a 5 hour flight from the East Coast.
-                 The food here tasted so delicious after the trip here."/>
-                <TestimonialCard name="Tyler Tohmine" description="The food here was fire!! Everyone should try this place
-                 out at least once if they live in Chicago."/>
-                <TestimonialCard name="Jack Hu" description="This restaurant served as a perfect dinner for me after a 
-                long night of studying. I would definitely order from here again!"/>
+            
+                <TestimonialCard star={Four} image={Jackson} name="Jackson" description="The food was just perfect, which matched the friendly and attentive service we were given."/>
+                <TestimonialCard  star={Five} image={Janice} name="Janice Sanders" description="Excellent location, this small place is carefully decorated, menu is amazing and not pricey, food was great and the attention even better."/>
+                <TestimonialCard star={Half} image={Mark} name="Mark kennedy" description="One of the best Mediterranean restaurants I’ve ever been.Great food, great ambience and better service!"/>
+                <TestimonialCard star={Five} image={Vicky} name="Vickie Gregory" description="Excellent service and the food and drinks were delicious! I highly recommend!"/>
+                
             </section>
 
             <section className="testimonials-carousel">

@@ -28,7 +28,12 @@ export default function ReservationForm(props) {
 
   return (
     <form className="reservation-form">
-      <div>
+
+      <img  class="table" src={require('../../../assets/restaurant.jpg')} alt="Little Lemon restaurant cuisine"></img>
+
+      <div class="reservation-details">
+        
+      <div class="details">
         <label htmlFor="fName">First Name</label> <br></br>
         <input
           type="text"
@@ -42,7 +47,7 @@ export default function ReservationForm(props) {
         ></input>
       </div>
 
-      <div>
+      <div class="details">
         <label htmlFor="lName">Last Name</label> <br></br>
         <input
           type="text"
@@ -51,11 +56,12 @@ export default function ReservationForm(props) {
           minLength={2}
           maxLength={50}
           value={lName}
+          required
           onChange={(e) => setLName(e.target.value)}
         ></input>
       </div>
 
-      <div>
+      <div class="details">
         <label htmlFor="email">Email</label> <br></br>
         <input
           type="email"
@@ -69,7 +75,7 @@ export default function ReservationForm(props) {
         ></input>
       </div>
 
-      <div>
+      <div class="details">
         <label htmlFor="phonenum">Phone Number</label> <br></br>
         <input
           type="tel"
@@ -83,7 +89,7 @@ export default function ReservationForm(props) {
         ></input>
       </div>
 
-      <div>
+      <div class="details">
         <label htmlFor="people">Number of People</label> <br></br>
         <input
           type="number"
@@ -97,7 +103,7 @@ export default function ReservationForm(props) {
         ></input>
       </div>
 
-      <div>
+      <div class="details">
         <label htmlFor="date">Select Date</label> <br></br>
         <input
           type="date"
@@ -108,14 +114,14 @@ export default function ReservationForm(props) {
         ></input>
       </div>
 
-      <div>
+      <div class="details">
         <label htmlFor="time">Select Time</label> <br></br>
         <select id="time" required>
           {finalTime}
         </select>
       </div>
 
-      <div>
+      <div class="details">
         <label htmlFor="occasion">Occasion</label> <br></br>
         <select
           id="occasion"
@@ -130,7 +136,7 @@ export default function ReservationForm(props) {
         </select>
       </div>
 
-      <div>
+      <div class="details">
         <label htmlFor="preferences">Seating preferences</label> <br></br>
         <select
           id="preferences"
@@ -144,7 +150,7 @@ export default function ReservationForm(props) {
         </select>
       </div>
 
-      <div>
+      <div  class="details">
         <label htmlFor="comments">Additional Comments</label> <br></br>
         <textarea
           id="comments"
@@ -156,17 +162,18 @@ export default function ReservationForm(props) {
         ></textarea>
       </div>
 
-      <div>
-        <br></br>
-        <small>
-          <p>
+      <div class="details">
+        
+        
+          <p class="note">
             Note: You cannot edit your reservation after submission. Please
             double-check your answer before submitting your reservation request.
           </p>
-        </small>
+        
         <Link className="action-button" to="/confirmation">
-          Book Table
+          <button type="submit">Book a table</button>
         </Link>
+      </div>
       </div>
     </form>
   );
