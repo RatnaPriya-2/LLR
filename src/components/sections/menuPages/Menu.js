@@ -4,7 +4,7 @@ export default function Heading() {
     <header className="reserve-table">
       
       <div className="reserve-header-text">
-        <h1>Order Online</h1>
+        <h1>Menu</h1>
       </div>
       <div class="page-image">
       <img

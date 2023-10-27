@@ -8,7 +8,7 @@ export default function Specials() {
     return (
         <section className="specials">
             <article className="specials-topbar">
-                <h1>This weeks specials</h1>
+                <h1>This weeks specials!</h1>
                 <a className="action-button" href={require('../../../assets/menu.webp')} target="_blank" rel="noreferrer">Online Menu</a>
             </article>
 

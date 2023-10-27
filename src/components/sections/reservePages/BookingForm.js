@@ -170,8 +170,8 @@ export default function ReservationForm(props) {
             double-check your answer before submitting your reservation request.
           </p>
         
-        <Link className="action-button" to="/confirmation">
-          <button type="submit">Book a table</button>
+          <Link className="action-button" to="/confirmation">
+          Book a Table
         </Link>
       </div>
       </div>
