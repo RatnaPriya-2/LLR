@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-export default function ReservationForm(props) {
+
+const ReservationForm = (props) => {
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
   const [email, setEmail] = useState("");
-  const [tel, setTel] = useState("");
   const [people, setPeople] = useState(1);
   const [date, setDate] = useState("");
   const [occasion, setOccasion] = useState("");
@@ -26,69 +26,82 @@ export default function ReservationForm(props) {
     setFinalTime(props.availableTimes.map((times) => <option>{times}</option>));
   }
 
+
+
+
+  const validateForm = () => {
+    if (fName === '') {
+      return false;
+    }
+    if (lName === '') {
+      return false;
+    }
+
+    if (email === '') {
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    // Do something with the form data
+  };
+
+  
   return (
-    <form className="reservation-form">
+    <form className="reservation-form" onSubmit={handleSubmit}>
 
       <img  class="table" src={require('../../../assets/restaurant.jpg')} alt="Little Lemon restaurant cuisine"></img>
 
       <div class="reservation-details">
         
       <div class="details">
-        <label htmlFor="fName">First Name</label> <br></br>
+        <label htmlFor="fName">First Name</label>
         <input
-          type="text"
-          id="fName"
-          placeholder="First Name"
-          required
-          minLength={2}
-          maxLength={50}
-          value={fName}
-          onChange={(e) => setFName(e.target.value)}
-        ></input>
+        type="text"
+        name="name"
+        placeholder="First Name"
+        minLength={2}
+        maxLength={50}
+        value={fName}
+        onChange={(e) => setFName(e.target.value)}
+        required
+      />
       </div>
 
       <div class="details">
-        <label htmlFor="lName">Last Name</label> <br></br>
+        <label htmlFor="lName">Last Name</label>
         <input
-          type="text"
-          id="lName"
-          placeholder="Last Name"
-          minLength={2}
-          maxLength={50}
-          value={lName}
-          required
-          onChange={(e) => setLName(e.target.value)}
-        ></input>
+        type="text"
+        name="name"
+        placeholder="Last Name"
+        minLength={2}
+        maxLength={50}
+        value={lName}
+        onChange={(e) => setLName(e.target.value)}
+        required
+      />
       </div>
-
       <div class="details">
-        <label htmlFor="email">Email</label> <br></br>
-        <input
-          type="email"
-          id="email"
-          placeholder="Email"
-          value={email}
-          required
-          minLength={4}
-          maxLength={200}
-          onChange={(e) => setEmail(e.target.value)}
-        ></input>
+      <label htmlFor="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        minLength={4}
+        maxLength={200}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
       </div>
-
-      <div class="details">
-        <label htmlFor="phonenum">Phone Number</label> <br></br>
-        <input
-          type="tel"
-          id="phonenum"
-          placeholder="(xxx)-xxx-xxxx"
-          value={tel}
-          required
-          minLength={10}
-          maxLength={25}
-          onChange={(e) => setTel(e.target.value)}
-        ></input>
-      </div>
-
       <div class="details">
         <label htmlFor="people">Number of People</label> <br></br>
         <input
@@ -120,7 +133,6 @@ export default function ReservationForm(props) {
           {finalTime}
         </select>
       </div>
-
       <div class="details">
         <label htmlFor="occasion">Occasion</label> <br></br>
         <select
@@ -162,19 +174,14 @@ export default function ReservationForm(props) {
         ></textarea>
       </div>
 
-      <div class="details">
-        
-        
-          <p class="note">
-            Note: You cannot edit your reservation after submission. Please
-            double-check your answer before submitting your reservation request.
-          </p>
-        
-          <Link className="action-button" to="/confirmation">
-          Book a Table
-        </Link>
-      </div>
+     
+      
+      <Link className="action-button" to="/confirmation">
+      <button class="submit-button" type="submit">Book a Table</button>
+      </Link>
       </div>
     </form>
   );
-}
+};
+
+export default ReservationForm;
