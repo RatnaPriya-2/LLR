@@ -5,9 +5,8 @@ import Reservation from "./pages/BookingPage";
 import Order from "./pages/Order";
 import Login from "./pages/Login";
 import Menu from "./pages/Menu";
-
-
 import Confirmation from "./pages/Confirmation";
+
 
 export default function Routing() {
   return (

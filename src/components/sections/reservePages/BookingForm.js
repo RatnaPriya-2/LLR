@@ -1,168 +1,180 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const ReservationForm = (props) => {
-  const [fName, setFName] = useState("");
-  const [lName, setLName] = useState("");
+// RestaurantBookingForm component
+const ReservationForm = () => {
+  // State for form fields
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [people, setPeople] = useState(1);
   const [date, setDate] = useState("");
-  const [occasion, setOccasion] = useState("");
-  const [preferences, setPreferences] = useState("");
+  const [time, setTime] = useState("");
+  const [numberOfGuests, setNumberOfGuests] = useState("");
+  const [occasion, setOccasion] = useState(""); // Default to an empty string
+  const [seatingPreference, setSeatingPreference] = useState(""); // Default to an empty string
   const [comments, setComments] = useState("");
 
-  const [finalTime, setFinalTime] = useState(
-    props.availableTimes.map((times) => <option>{times}</option>)
-  );
+  // State for form validation errors
+  const [errors, setErrors] = useState({});
 
-  function handleDateChange(e) {
-    setDate(e.target.value);
+  // History for programmatic navigation
+  const navigate = useNavigate();
 
-    var stringify = e.target.value;
-    const date = new Date(stringify);
-
-    props.updateTimes(date);
-
-    setFinalTime(props.availableTimes.map((times) => <option>{times}</option>));
-  }
-
-
-
-
-  const validateForm = () => {
-    if (fName === '') {
-      return false;
-    }
-    if (lName === '') {
-      return false;
-    }
-
-    if (email === '') {
-      return false;
-    }
-
-    return true;
-  };
-
+  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!validateForm()) {
+    // Validate form fields
+    const validationErrors = {};
+    if (!firstName.trim())
+      validationErrors.firstName = "First Name is required";
+    if (!lastName.trim()) validationErrors.lastName = "Last Name is required !";
+    if (!email.trim()) validationErrors.email = "Email is required !";
+    if (!date.trim()) validationErrors.date = "Date is required !";
+    if (!time.trim()) validationErrors.time = "Time is required !";
+    if (!numberOfGuests.trim())
+      validationErrors.numberOfGuests = "Number of Guests is required !";
+    if (!occasion.trim()) validationErrors.occasion = "Occasion is required !";
+    if (!seatingPreference.trim())
+      validationErrors.seatingPreference = "Seating Preference is required !";
+
+    // If there are validation errors, set them in the state and return
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       return;
     }
 
-    // Do something with the form data
+    // If validation passes, clear any previous errors
+    setErrors({});
+
+    // Perform booking logic (you can replace this with your actual booking logic)
+
+    // Redirect to confirmation page
+    navigate("/confirmation");
   };
 
-  
   return (
-    <form className="reservation-form" onSubmit={handleSubmit}>
+    <div class="details">
+     
+      <form className="reservation-form" onSubmit={handleSubmit}>
+        <img
+          class="table"
+          src={require("../../../assets/restaurant.jpg")}
+          alt="Little Lemon restaurant cuisine"
+        ></img>
 
-      <img  class="table" src={require('../../../assets/restaurant.jpg')} alt="Little Lemon restaurant cuisine"></img>
+        <div class="reservation-details">
+          <div class="details">
+            <label htmlFor="firstName">First Name:</label>
+            <input
+              type="text"
+              id="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            {errors.firstName && (
+              <p style={{ marginTop: 0, color: 'red' }}> {errors.firstName}</p>
+            )}
+          </div>
 
-      <div class="reservation-details">
-        
-      <div class="details">
-        <label htmlFor="fName">First Name</label>
-        <input
-        type="text"
-        name="name"
-        placeholder="First Name"
-        minLength={2}
-        maxLength={50}
-        value={fName}
-        onChange={(e) => setFName(e.target.value)}
-        required
-      />
-      </div>
+          <div class="details">
+            <label htmlFor="lastName">Last Name:</label>
+            <input
+              type="text"
+              id="lastName"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+            {errors.lastName && (
+              <p style={{ marginTop: 0, color: 'red' }}> {errors.lastName}</p>
+            )}
+          </div>
 
-      <div class="details">
-        <label htmlFor="lName">Last Name</label>
-        <input
-        type="text"
-        name="name"
-        placeholder="Last Name"
-        minLength={2}
-        maxLength={50}
-        value={lName}
-        onChange={(e) => setLName(e.target.value)}
-        required
-      />
-      </div>
-      <div class="details">
-      <label htmlFor="email">Email</label>
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        minLength={4}
-        maxLength={200}
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      </div>
-      <div class="details">
-        <label htmlFor="people">Number of People</label> <br></br>
-        <input
-          type="number"
-          id="people"
-          placeholder="Number of People"
-          value={people}
-          required
-          min={1}
-          max={100}
-          onChange={(e) => setPeople(e.target.value)}
-        ></input>
-      </div>
+          <div class="details">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {errors.email && <p style={{ marginTop: 0, color: 'red' }}> {errors.email}</p>}
+          </div>
 
-      <div class="details">
-        <label htmlFor="date">Select Date</label> <br></br>
-        <input
-          type="date"
-          id="date"
-          required
-          value={date}
-          onChange={handleDateChange}
-        ></input>
-      </div>
+          <div class="details">
+            <label htmlFor="date">Date:</label>
+            <input
+              type="date"
+              id="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+            {errors.date && <p style={{ marginTop: 0, color: 'red' }}> {errors.date}</p>}
+          </div>
 
-      <div class="details">
-        <label htmlFor="time">Select Time</label> <br></br>
-        <select id="time" required>
-          {finalTime}
-        </select>
-      </div>
-      <div class="details">
-        <label htmlFor="occasion">Occasion</label> <br></br>
-        <select
-          id="occasion"
-          value={occasion}
-          onChange={(e) => setOccasion(e.target.value)}
-        >
-          <option>None</option>
-          <option>Birthday</option>
-          <option>Anniversary</option>
-          <option>Engagement</option>
-          <option>Other</option>
-        </select>
-      </div>
+          <div class="details">
+            <label htmlFor="time">Time:</label>
+            <input
+              type="time"
+              id="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+            />
+            {errors.time && <p style={{ marginTop: 0, color: 'red' }}> {errors.time}</p>}
+          </div>
 
-      <div class="details">
-        <label htmlFor="preferences">Seating preferences</label> <br></br>
-        <select
-          id="preferences"
-          value={preferences}
-          onChange={(e) => setPreferences(e.target.value)}
-        >
-          <option>None</option>
-          <option>Indoors</option>
-          <option>Outdoor (Patio)</option>
-          <option>Outdoor (Sidewalk)</option>
-        </select>
-      </div>
+          <div class="details">
+            <label htmlFor="numberOfGuests">Number of Guests:</label>
+            <input
+              type="number"
+              id="numberOfGuests"
+              value={numberOfGuests}
+              onChange={(e) => setNumberOfGuests(e.target.value)}
+            />
+            {errors.numberOfGuests && (
+              <p style={{ marginTop: 0, color: 'red' }}> {errors.numberOfGuests}</p>
+            )}
+          </div>
 
-      <div  class="details">
+          <div class="details">
+            <label htmlFor="occasion">Occasion:</label>
+            <select
+              id="occasion"
+              value={occasion}
+              onChange={(e) => setOccasion(e.target.value)}
+            >
+              <option value="">Select an Occasion</option>
+              <option value="birthday">Birthday</option>
+              <option value="marriage anniversary">Marriage Anniversary</option>
+              <option value="office meeting">Office Meeting</option>
+              <option value="casual">Casual</option>
+              <option value="engagement">Engagement</option>
+              <option value="other">Other</option>
+            </select>
+            {errors.occasion && (
+              <p style={{ marginTop: 0, color: 'red' }}> {errors.occasion}</p>
+            )}
+          </div>
+
+          <div class="details">
+            <label htmlFor="seatingPreference">Seating Preference:</label>
+            <select
+              id="seatingPreference"
+              value={seatingPreference}
+              onChange={(e) => setSeatingPreference(e.target.value)}
+            >
+              <option value="">Select a Seating Preference</option>
+              <option value="none">None</option>
+              <option value="outdoor-patio">Outdoor (Patio)</option>
+              <option value="outdoor-sidewalk">Outdoor (Sidewalk)</option>
+              <option value="indoors">Indoors</option>
+            </select>
+            {errors.seatingPreference && (
+              <p style={{ marginTop: 0, color: 'red' }}> {errors.seatingPreference}</p>
+            )}
+          </div>
+
+          <div  class="details">
         <label htmlFor="comments">Additional Comments</label> <br></br>
         <textarea
           id="comments"
@@ -174,13 +186,12 @@ const ReservationForm = (props) => {
         ></textarea>
       </div>
 
-     
-      
-      <Link className="action-button" to="/confirmation">
-      <button class="submit-button" type="submit">Book a Table</button>
-      </Link>
-      </div>
-    </form>
+          <button class="submit-button" type="submit">
+            Book a Table
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 
