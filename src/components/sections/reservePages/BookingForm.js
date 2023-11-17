@@ -55,7 +55,6 @@ const ReservationForm = () => {
 
   return (
     <div class="details">
-     
       <form className="reservation-form" onSubmit={handleSubmit}>
         <img
           class="table"
@@ -73,7 +72,10 @@ const ReservationForm = () => {
               onChange={(e) => setFirstName(e.target.value)}
             />
             {errors.firstName && (
-              <p style={{ marginTop: 0,  marginBottom: '20px', color: 'red' }}> {errors.firstName}</p>
+              <p style={{ marginTop: 0, marginBottom: "20px", color: "red" }}>
+                {" "}
+                {errors.firstName}
+              </p>
             )}
           </div>
 
@@ -86,7 +88,10 @@ const ReservationForm = () => {
               onChange={(e) => setLastName(e.target.value)}
             />
             {errors.lastName && (
-              <p style={{ marginTop: 0, marginBottom: '20px', color: 'red' }}> {errors.lastName}</p>
+              <p style={{ marginTop: 0, marginBottom: "20px", color: "red" }}>
+                {" "}
+                {errors.lastName}
+              </p>
             )}
           </div>
 
@@ -98,7 +103,12 @@ const ReservationForm = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            {errors.email && <p style={{ marginTop: 0, marginBottom: '20px', color: 'red' }}> {errors.email}</p>}
+            {errors.email && (
+              <p style={{ marginTop: 0, marginBottom: "20px", color: "red" }}>
+                {" "}
+                {errors.email}
+              </p>
+            )}
           </div>
 
           <div class="details">
@@ -109,7 +119,12 @@ const ReservationForm = () => {
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />
-            {errors.date && <p style={{ marginTop: 0, marginBottom: '20px', color: 'red' }}> {errors.date}</p>}
+            {errors.date && (
+              <p style={{ marginTop: 0, marginBottom: "20px", color: "red" }}>
+                {" "}
+                {errors.date}
+              </p>
+            )}
           </div>
 
           <div class="details">
@@ -120,7 +135,12 @@ const ReservationForm = () => {
               value={time}
               onChange={(e) => setTime(e.target.value)}
             />
-            {errors.time && <p style={{ marginTop: 0, marginBottom: '20px', color: 'red' }}> {errors.time}</p>}
+            {errors.time && (
+              <p style={{ marginTop: 0, marginBottom: "20px", color: "red" }}>
+                {" "}
+                {errors.time}
+              </p>
+            )}
           </div>
 
           <div class="details">
@@ -132,7 +152,10 @@ const ReservationForm = () => {
               onChange={(e) => setNumberOfGuests(e.target.value)}
             />
             {errors.numberOfGuests && (
-              <p style={{ marginTop: 0, marginBottom: '20px', color: 'red' }}> {errors.numberOfGuests}</p>
+              <p style={{ marginTop: 0, marginBottom: "20px", color: "red" }}>
+                {" "}
+                {errors.numberOfGuests}
+              </p>
             )}
           </div>
 
@@ -152,7 +175,10 @@ const ReservationForm = () => {
               <option value="other">Other</option>
             </select>
             {errors.occasion && (
-              <p style={{ marginTop: 0, marginBottom: '20px', color: 'red' }}> {errors.occasion}</p>
+              <p style={{ marginTop: 0, marginBottom: "20px", color: "red" }}>
+                {" "}
+                {errors.occasion}
+              </p>
             )}
           </div>
 
@@ -170,21 +196,24 @@ const ReservationForm = () => {
               <option value="indoors">Indoors</option>
             </select>
             {errors.seatingPreference && (
-              <p style={{ marginTop: 0, marginBottom: '20px', color: 'red' }}> {errors.seatingPreference}</p>
+              <p style={{ marginTop: 0, marginBottom: "20px", color: "red" }}>
+                {" "}
+                {errors.seatingPreference}
+              </p>
             )}
           </div>
 
-          <div  class="details">
-        <label htmlFor="comments">Additional Comments</label> <br></br>
-        <textarea
-          id="comments"
-          rows={8}
-          cols={50}
-          placeholder="Additional Comments"
-          value={comments}
-          onChange={(e) => setComments(e.target.value)}
-        ></textarea>
-      </div>
+          <div class="details">
+            <label htmlFor="comments">Additional Comments</label> <br></br>
+            <textarea
+              id="comments"
+              rows={8}
+              cols={50}
+              placeholder="Additional Comments"
+              value={comments}
+              onChange={(e) => setComments(e.target.value)}
+            ></textarea>
+          </div>
 
           <button class="submit-button" type="submit">
             Book a Table

@@ -7,7 +7,6 @@ import Login from "./pages/Login";
 import Menu from "./pages/Menu";
 import Confirmation from "./pages/Confirmation";
 
-
 export default function Routing() {
   return (
     <Routes>
@@ -15,12 +14,9 @@ export default function Routing() {
 
       <Route path="/about" element={<About />} />
       <Route path="/menu" element={<Menu />} />
-
       <Route path="/reservations" element={<Reservation />} />
-
       <Route path="/order" element={<Order />} />
       <Route path="/login" element={<Login />} />
-
       <Route path="/confirmation" element={<Confirmation />} />
     </Routes>
   );
