@@ -27,7 +27,7 @@ const ReservationForm = () => {
     // Validate form fields
     const validationErrors = {};
     if (!firstName.trim())
-      validationErrors.firstName = "First Name is required";
+      validationErrors.firstName = "First Name is required !";
     if (!lastName.trim()) validationErrors.lastName = "Last Name is required !";
     if (!email.trim()) validationErrors.email = "Email is required !";
     if (!date.trim()) validationErrors.date = "Date is required !";
